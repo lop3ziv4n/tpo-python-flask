@@ -1,0 +1,146 @@
+{% include 'header.html' %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+<div class="card bg-light border-dark m-3">
+    <div class="card-header">
+        <h5 class="card-title">Membresía de bandas - Suscripción anual ($100.00)</h5>
+    </div>
+    <div class="card-body">
+        <h6 class="card-subtitle text-muted">Incluye beneficios de membresía para hasta 2 personas (solo
+            miembros activos).</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Paquete (hasta 2 miembros)</li>
+        <li class="list-group-item">Período de suscripción: 1 año</li>
+        <li class="list-group-item">Renovación automática de suscripción. Pagos recurrentes anuales.</li>
+        <li class="list-group-item"> Beneficios para miembros para hasta 2 personas, incluidos 2 perfiles en línea,
+            admisiones a eventos y acceso a beneficios/descuentos minoristas.
+        </li>
+        <li class="list-group-item"> Oportunidad de colocar boletines informativos en la sección de noticias de
+            artistas, artistas destacados o lanzamiento de nuevos álbumes
+        </li>
+    </ul>
+</div>
+<form method="post" action="/store" enctype="multipart/form-data">
+    <div class="card bg-light m-3">
+        <div class="card-header">
+            <h5 class="card-title">Datos de la Membresía</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="txtFirstName">Nombre: *</label>
+                        <input id="txtFirstName" class="form-control" type="text" name="txtFirstName">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="txtLastName">Apellido: *</label>
+                        <input id="txtLastName" class="form-control" type="text" name="txtLastName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 pt-3">
+                <div class="form-group">
+                    <label for="txtDni">DNI: *</label>
+                    <input id="txtDni" class="form-control" type="number" name="txtDni">
+                </div>
+            </div>
+            <div class="col-8 pt-3">
+                <div class="form-group">
+                    <label for="txtAddress">Dirección:</label>
+                    <input id="txtAddress" class="form-control" type="text" name="txtAddress">
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="txtCity">Ciudad:</label>
+                        <input id="txtCity" class="form-control" type="text" name="txtCity">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="txtCountry">País:</label>
+                        <input id="txtCountry" class="form-control" type="text" name="txtCountry">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="txtProvince">Provincia:</label>
+                        <input id="txtProvince" class="form-control" type="text" name="txtProvince">
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="txtPostalCode">Código Postal:</label>
+                        <input id="txtPostalCode" class="form-control" type="text" name="txtPostalCode">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="txtPhone">Teléfono:</label>
+                        <input id="txtPhone" class="form-control" type="number" name="txtPhone">
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 pt-3">
+                <div class="form-group ">
+                    <label for="txtEmail">Correo: *</label>
+                    <input id="txtEmail" class="form-control" type="email" name="txtEmail">
+                </div>
+            </div>
+            <div class="col-8 pt-3">
+                <div class="form-group ">
+                    <label for="txtPicture">Foto de Pérfil: *</label>
+                    <input id="txtPicture" class="form-control" type="file" name="txtPicture">
+                </div>
+            </div>
+            <div class="form-check pt-3">
+                <input class="form-check-input" type="radio" name="radioPay" value="Pagar con tarjeta de crédito"
+                       id="radioPayCreditCard">
+                <label class="form-check-label" for="radioPayCreditCard">
+                    Pagar con tarjeta de crédito
+                </label>
+            </div>
+            <div class="form-check pt-3">
+                <input class="form-check-input" type="radio" name="radioPay" value="Pagar en efectivo" id="radioPayCash"
+                       checked>
+                <label class="form-check-label" for="radioPayCash">
+                    Pagar en efectivo
+                </label>
+            </div>
+            <div class="form-check pt-4">
+                <input class="form-check-input" type="checkbox" id="checkPrivacyPolicy"
+                       name="checkPrivacyPolicy" value="Política de Privacidad">
+                <label class="form-check-label" for="checkPrivacyPolicy">
+                    Este sitio recopila nombres, correos electrónicos y otra información del usuario. Acepto los
+                    términos establecidos en <u>la Política de Privacidad</u>.
+                </label>
+            </div>
+            </p>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-2 offset-1">
+                    <button type="submit" class="btn btn-success">Ingresar</button>
+                </div>
+                <div class="col-2 offset-7">
+                    <button onclick="{{ url_for('index') }}" class="btn btn-primary">Regresar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% include 'footer.html' %}

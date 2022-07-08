@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+<br>
+<a href="{{ url_for('create') }}" class="btn btn-success">
+    Ingresar nueva membresía
+</a>
+<br>
+<br>
+
+<table class="table table-light">
+    <thead class="thead-light">
+    <tr>
+        <th>#</th>
+        <th>Foto</th>
+        <th>Apellido Nombre</th>
+        <th>DNI</th>
+        <th>Correo</th>
+        <th>Metodo de pago</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for membership in memberships %}
+    <tr>
+        <td>{{ membership[0] }}</td>
+        <td><img class="rounded-circle" width="70" height="70" src="uploads/{{ membership[11] }}" alt=""></td>
+        <td>{{ membership[2] }}, {{ membership[1] }}</td>
+        <td>{{ membership[3] }}</td>
+        <td>{{ membership[10] }}</td>
+        <td>{{ membership[12] }}</td>
+        <td>
+            <a class="btn btn-warning" href="/edit/{{ membership[0] }}"><i class="bi bi-pencil-square"></i></a>
+            <a class="btn btn-danger" onclick="return confirm('¿Desea borrar la membresía?')"
+               href="/destroy/{{ membership[0] }}"><i class="bi bi-trash"></i></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% include 'footer.html' %}
